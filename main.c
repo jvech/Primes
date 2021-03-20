@@ -22,6 +22,8 @@ int main(int argc, char **argv){
             prime++;
         }while(count<n);
         printf("%d\n",prime - 1);
+
+        list_free(&prime_numbers);
         return EXIT_SUCCESS;
     }
     return EXIT_FAILURE;
@@ -48,13 +50,13 @@ node* node_create(int item){
 }
 
 
-/* free the node item in memory */
+/* Free the node item in memory */
 void node_free(node* x){
     free(x);
 }
 
 
-/* initialize the list head */
+/* Initialize the list head */
 void list_init(list *x){
     x->head = NULL;
 }
@@ -75,11 +77,21 @@ void list_append(list *x, int item){
 }
 
 
-/* Show the list in standart output */
+/* Show the list in the standart output */
 void list_print(list x){
     node *p;
     printf("[");
     for(p=x.head; p!=NULL; p=p->next)
         printf("%4d", p->value);
     printf("]\n");
+}
+
+/* Deallocate all the nodes of the list */
+void list_free(list *x){
+    node *p;
+    while(x->head!=NULL){
+        p = x->head;
+        x->head = p->next;
+        node_free(p);
+    }
 }

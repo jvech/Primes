@@ -14,6 +14,7 @@ void node_free(node *);
 void list_init(list *);
 void list_append(list *, int);
 void list_print(list);
+void list_free(list *);
 
 int check_prime(list, int);
 #endif
