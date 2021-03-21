@@ -1,5 +1,5 @@
 FLAGS = -Wall
-BIN=prime
+BIN = bin/prime
 CC = gcc
 all: run
 
@@ -7,7 +7,7 @@ build: main.c
 	$(CC) -o $(BIN) main.c $(FLAGS)
 
 install: build
-	mv $(BIN) ~/.local/bin/
+	cp $(BIN) ~/.local/bin/
 
 run: build
 	./$(BIN) 1

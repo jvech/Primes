@@ -10,23 +10,27 @@ int main(int argc, char **argv){
     prime = 2;
     count = 0;
 
-    if(argc == 2){
-        n = atoi(argv[1]);
-        if(n == 0)
-            return EXIT_FAILURE;
-        do{
-            if(check_prime(prime_numbers, prime)){
-                count++;
-                list_append(&prime_numbers, prime);
-            }
-            prime++;
-        }while(count<n);
-        printf("%d\n",prime - 1);
-
-        list_free(&prime_numbers);
-        return EXIT_SUCCESS;
+    if(argc != 2){
+        fprintf(stderr, "Usage: prime INT_NUMBER\n");
+        return EXIT_FAILURE;
     }
-    return EXIT_FAILURE;
+
+    n = atoi(argv[1]);
+    if(n == 0){
+        fprintf(stderr, "Usage: prime INT_NUMBER\n");
+        return EXIT_FAILURE;
+    }
+    do{
+        if(check_prime(prime_numbers, prime)){
+            count++;
+            list_append(&prime_numbers, prime);
+        }
+        prime++;
+    }while(count<n);
+    printf("%d\n",prime - 1);
+
+    list_free(&prime_numbers);
+    return EXIT_SUCCESS;
 }
 
 int check_prime(list prime_numbers, int prime){
