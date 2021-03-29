@@ -2,6 +2,8 @@
 #include<stdio.h>
 #include"main.h"
 
+void print_usage(void);
+
 int main(int argc, char **argv){
     list prime_numbers;
     list_init(&prime_numbers);
@@ -11,13 +13,13 @@ int main(int argc, char **argv){
     count = 0;
 
     if(argc != 2){
-        fprintf(stderr, "Usage: prime INT_NUMBER\n");
+        print_usage();
         return EXIT_FAILURE;
     }
 
     n = atoi(argv[1]);
     if(n == 0){
-        fprintf(stderr, "Usage: prime INT_NUMBER\n");
+        print_usage();
         return EXIT_FAILURE;
     }
     do{
@@ -31,6 +33,11 @@ int main(int argc, char **argv){
 
     list_free(&prime_numbers);
     return EXIT_SUCCESS;
+}
+
+void print_usage(){
+    fprintf(stderr, "Usage: prime [INT_NUMBER]\n");
+    fprintf(stderr, "Shows the INT_NUMBER-th prime value\n");
 }
 
 int check_prime(list prime_numbers, int prime){
