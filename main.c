@@ -36,8 +36,8 @@ int main(int argc, char **argv){
 }
 
 void print_usage(){
-    fprintf(stderr, "Usage: prime [INT_NUMBER]\n");
-    fprintf(stderr, "Shows the INT_NUMBER-th prime value\n");
+    fprintf(stderr, "Usage: prime <integer>\n");
+    fprintf(stderr, "Shows the n-th prime value\n");
 }
 
 int check_prime(list prime_numbers, int prime){
