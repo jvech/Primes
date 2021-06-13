@@ -18,6 +18,14 @@ cd Primes/
 make install
 ```
 
+You should make sure that _~/.local/bin/_ path is set in the $PATH variable, if
+it is not the case put this in the .bash\_profile file:
+
+```
+PATH=~/.local/bin/:$PATH
+```
+
+
 ## ToDo
 
 * Add pipe functionality
