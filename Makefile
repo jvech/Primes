@@ -5,6 +5,7 @@ CC = gcc
 all: build
 
 build: main.c
+	mkdir -p bin
 	$(CC) -o $(BIN) main.c $(FLAGS)
 
 install: build
